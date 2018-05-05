@@ -1,0 +1,15 @@
+---------- Date: 2018-04-17 03:04:00 ~ IP : 167.160.180.134 ----------
+REQUEST URI : /product.html?path=69_59&product_id=42
+MOD DETAILS:
+   modFile   : /usr/local/www/vqmod/xml/youtube.xml
+   id        : Youtube
+   version   : 1.0
+   vqmver    : 2.3.2
+   author    : Karley Deutschland GmbH
+
+File Name    : catalog/view/theme/techone/template/product/product.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if ($attribute_groups) { $tabs[] = array( 'heading' => $tab_attribute, 'content' => 'attribute','sort' => 2 ); }
+
+----------------------------------------------------------------------
+
+

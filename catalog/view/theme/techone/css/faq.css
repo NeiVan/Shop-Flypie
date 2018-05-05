@@ -1,0 +1,39 @@
+.faq-area .faq-section .panel-faq .panel-heading .panel-title {
+     position: relative;
+}
+
+.faq-area .faq-section .panel-faq .panel-heading .panel-title > a:after {
+    content: "\f068";
+    font-family: fontawesome;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    font-size: 13px;
+}
+
+.faq-area .faq-section .panel-faq .panel-heading .panel-title > a.collapsed:after {
+    content: "\f067";
+}
+
+h2.section-title {
+     padding-bottom: 10px;
+}
+.care-tab{
+    list-style: none;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-style: inherit;
+    font-family: inherit;
+}
+.faq-section {
+    display: none;
+}
+.faq-section.show{
+    display: block;
+}
+.care-tab li.active .section-title a{
+    border-bottom: 1px solid #44a8f2;
+}

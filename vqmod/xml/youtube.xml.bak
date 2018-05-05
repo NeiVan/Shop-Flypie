@@ -1,0 +1,207 @@
+<modification>
+	<id><![CDATA[Youtube]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.3.2]]></vqmver>
+	<author><![CDATA[Karley Deutschland GmbH]]></author>
+	<file name="fly/language/*/catalog/product.php">
+		<operation>
+			<search position="bottom"><![CDATA[]]></search>
+			<add><![CDATA[$_['tab_youtube'] = 'Youtube';
+			$_['text_youtube_link'] = "Complete Youtube link e.g. https://www.youtube.com/watch?v=XXXXXXXX";
+			$_['text_youtube_description'] = "<u><b>Youtube Title</b></u><br><i>Example: https://www.youtube.com/watch?v=c13zJHHHCT4|Bruno Mars Heaven</i><br>The title is behind the '|'<br><br><u><b>Additional Links</b></u><br>You can add more than one Video by adding an comma at the end of each link follow by the next link<br />Example: <i>https://www.youtube.com/watch?v=c13zJHHHCT4|Bruno Mars Heaven,https://www.youtube.com/watch?v=OMr9zCvtOfY|Marry you</i>";]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/*/product/product.php">
+		<operation>
+			<search position="bottom"><![CDATA[]]></search>
+			<add><![CDATA[$_['tab_youtube'] = 'Youtube';]]></add>
+		</operation>
+	</file>
+
+	<file name="fly/controller/catalog/product.php">
+		<operation>
+			<search position="before" index="2"><![CDATA[if (isset($this->error['warning'])) {]]></search>
+			<add><![CDATA[
+				$data['tab_youtube'] = $this->language->get('tab_youtube');
+				$data['text_youtube_link'] = $this->language->get('text_youtube_link');
+				$data['text_youtube_description'] = $this->language->get('text_youtube_description');
+				]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$data['layouts'] = $this->model_design_layout->getLayouts();]]></search>
+			<add><![CDATA[
+				$data['youtubeInstalled'] = $this->model_catalog_product->youtube();
+
+				if (isset($this->request->post['youtube'])) {
+					$data['youtube'] = $this->request->post['youtube'];
+				} elseif (!empty($product_info)) {
+					if($data['youtubeInstalled'])
+					{
+						$data['youtube'] = $product_info['youtube'];
+					}
+				} else {
+				if($data['youtubeInstalled'])
+					{
+						$data['youtube'] = '';
+					}
+
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="fly/model/catalog/product.php">
+		<operation>
+			<search position="after" index="1"><![CDATA[$product_id = $this->db->getLastId();]]></search>
+			<add><![CDATA[if (isset($data['youtube'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "product SET youtube = '" . $this->db->escape($data['youtube']) . "' WHERE product_id = '" . (int)$product_id . "'");
+		}			]]></add>
+		</operation>
+		<operation>
+			<search position="after" index="1"><![CDATA[$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");]]></search>
+			<add><![CDATA[
+				if (isset($data['youtube'])) {
+					$this->db->query("UPDATE " . DB_PREFIX . "product SET youtube = '" . $this->db->escape($data['youtube']) . "' WHERE product_id = '" . (int)$product_id . "'");
+				}
+				]]>
+			</add>
+		</operation>
+		<operation>
+			<search position="before" error="log"><![CDATA[public function getTotalProductsByLayoutId($layout_id) {]]></search>
+			<add><![CDATA[
+			public function youtube() {
+				$result = $this->db->query("SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = 'youtube'");
+				return $result->num_rows > 0;
+			}
+			]]></add>
+		</operation>
+	</file>
+	---
+	<file name="fly/view/template/catalog/product_form.twig">
+		<operation>
+			<search position="after"><![CDATA[<li><a href="#tab-image" data-toggle="tab">{{ tab_image }}</a></li>]]></search>
+			<add><![CDATA[
+				{% if youtubeInstalled %}
+				<li><a href="#tab-youtube" data-toggle="tab">{{ tab_youtube }}</a></li>
+				{% endif %}
+				]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[<div class="tab-pane" id="tab-reward">]]></search>
+			<add><![CDATA[
+			{% if youtubeInstalled %}
+			<div class="tab-pane" id="tab-youtube">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <tbody>
+					  {% if youtubeInstalled %}
+							<div id="tab-youtube">{{ text_youtube_link }}<br />
+								<textarea name="youtube" cols="80" rows="10">{{ youtube }}</textarea>
+								<br>
+								<br>
+							<div style=" padding:5px; width:790px; border:3px solid #009bf4; -moz-box-shadow:3px 3px 5px 3px #eee; -webkit-box-shadow: 3px 3px 5px 3px #eee;   box-shadow: 3px 3px 5px 3px #eee;">
+								{{ text_youtube_description }}
+							</div>
+							</div>
+					  {% endif %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+			{% endif %}]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/product.php">
+		<operation>
+			<search position="after" error="log"><![CDATA[$data['points'] = $product_info['points'];]]></search>
+			<add><![CDATA[if (strlen($product_info['youtube']) > 4) {
+	$data['youtubes'] = array();
+	$youtubes = explode(',',$product_info['youtube']);
+	$data['youtubes'] = $youtubes;
+}
+
+
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" error="log"><![CDATA[$this->load->model('catalog/product');]]></search>
+			<add><![CDATA[
+			$data['youtubeInstalled'] = $this->model_catalog_product->youtube();
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/techone/template/product/product.tpl">
+		<operation>
+			<search position="after" error="log">
+			<![CDATA[if ($attribute_groups) { $tabs[] = array( 'heading' => $tab_attribute, 'content' => 'attribute','sort' => 2 ); }]]></search>
+			<add><![CDATA[$tabs[] = array( 'heading' => $tab_youtube, 'content' => 'youtube','sort' => 3 );]]></add>
+		</operation>
+		<operation>
+			<search position="after" error="log">
+				<![CDATA[if($tab['content'] == 'attribute') { $id = 'tab-attribute'; }]]></search>
+			<add><![CDATA[
+			    if($tab['content'] == 'youtube') { $id = 'tab-youtube'; }
+			]]></add>
+		</operation>
+		<operation>
+			<search position="replace" error="log">
+				<![CDATA[if($tab['content'] != 'description' && $tab['content'] != 'attribute' && $tab['content'] != 'review') {]]></search>
+			<add><![CDATA[if($tab['content'] != 'description' && $tab['content'] != 'attribute' && $tab['content'] != 'review' && $tab['content'] != 'youtube') {]]></add>
+		</operation>
+		<operation>
+			<search position="after" error="log">
+				<![CDATA[<div id="tab-description" class="tab-content" itemprop="description"><?php echo $description; ?></div>]]></search>
+			<add><![CDATA[<div id="tab-youtube" class="tab-content" itemprop="youtube">
+			<?php if (@is_array($youtubes)){
+			echo "<div class='row'>";
+			foreach($youtubes as $film) {
+			 $Filmteile =explode('|', $film);
+			 $code = explode('=',$Filmteile[0]);
+
+			 if(count($Filmteile)>1){
+			    @$FilmTitel = $FilmTite[1];
+			 }else{
+               $FilmTitel = 'YouTube video';
+			 }
+
+			 if(strpos($Filmteile[0],'youtube')){
+                  echo  "<div class='col-md-3'>
+						<a title='$FilmTitel' class='popup-youtube' href='https://www.youtube.com/watch?v=$code[1]'><img src='https://img.youtube.com/vi/$code[1]/hqdefault.jpg' alt='$FilmTitel' style='width:100%;'/></a>
+					</div>";
+			 }
+
+			}
+			echo "</div><hr class='spacer'/>";
+			} ?>
+			</div>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/model/catalog/product.php">
+		<operation>
+			<search position="after" offset="1"><![CDATA[public function getProduct($product_id) {]]></search>
+			<add><![CDATA[
+			$youtubestring = '0';
+		if($this->youtube())
+		{
+			if(isset($query->row['youtube']))
+				$youtubestring = $query->row['youtube'];
+		}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['date_modified'    => $query->row['date_modified'],]]></search>
+			<add><![CDATA['youtube'    => $youtubestring,]]></add>
+		</operation>
+		<operation>
+				<search position="before"><![CDATA[public function getTotalProductSpecials() {]]></search>
+			<add><![CDATA[
+			public function youtube() {
+				$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = 'youtube'");
+				if($query->num_rows) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			]]></add>
+		</operation>
+	</file>
+</modification>
