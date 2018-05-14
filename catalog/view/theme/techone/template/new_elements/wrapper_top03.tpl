@@ -7,7 +7,7 @@ $modules_old_opencart = new Modules($registry); ?>
 	================================================== -->
 <div class="breadcrumb <?php if($theme_options->get( 'breadcrumb_layout' ) == 1) { echo 'full-width'; } else { echo 'fixed'; } ?>" style="padding: 0;">
 	<div style="width: 100%;height: auto;margin-bottom: 10px;">
-		<img alt="Flypie" src="http://111.230.242.218/images/flypie-contact.png">
+		<img alt="Flypie" src="https://www.flypie.net/image/catalog/Contact/flypie-contact.png">
 	</div>
 </div>
 

@@ -28,19 +28,19 @@ include('catalog/view/theme/' . $config->get('theme_' . $config->get('config_the
                 <div class="row">
                     <div class="col-sm-12 item-box">
                         <a style="display: inline-block;width: 155px;height: 155px;margin-left: 18px;margin-right: 18px;margin-bottom: 30px;padding-top: 20px;padding-left: 10px;padding-right: 10px;border: solid 1px #707473;border-radius: 3px;text-align: center;vertical-align: top;" class="item" href="https://www.flypie.net/shopping-faq.html">
-                            <img style="width: 60px;height: 60px;border: none" alt src="http://111.230.242.218/images/s1-shopping.png">
+                            <img style="width: 60px;height: 60px;border: none" alt src="https://www.flypie.net/image/catalog/Contact/s1-shopping.png">
                             <h4 style="font-size: 14px;margin-top: 10px;text-transform: uppercase;color: #707473;">购买指南</h4>
                         </a>
                         <a style="display: inline-block;width: 155px;height: 155px;margin-left: 18px;margin-right: 18px;margin-bottom: 30px;padding-top: 20px;padding-left: 10px;padding-right: 10px;border: solid 1px #707473;border-radius: 3px;text-align: center;vertical-align: top;" class="item" href="https://www.flypie.net/maintenance-service.html">
-                            <img style="width: 60px;height: 60px;border: none" alt src="http://111.230.242.218/images/s1-application.png">
+                            <img style="width: 60px;height: 60px;border: none" alt src="https://www.flypie.net/image/catalog/Contact/s1-application.png">
                             <h4 style="font-size: 14px;margin-top: 10px;text-transform: uppercase;color: #707473;">维修服务</h4>
                         </a>
                         <a style="display: inline-block;width: 155px;height: 155px;margin-left: 18px;margin-right: 18px;margin-bottom: 30px;padding-top: 20px;padding-left: 10px;padding-right: 10px;border: solid 1px #707473;border-radius: 3px;text-align: center;vertical-align: top;" class="item" href="https://www.flypie.net/aftersale-servicepolicy.html">
-                            <img style="width: 60px;height: 60px;border: none" alt src="http://111.230.242.218/images/s1-service.png">
+                            <img style="width: 60px;height: 60px;border: none" alt src="https://www.flypie.net/image/catalog/Contact/s1-service.png">
                             <h4 style="font-size: 14px;margin-top: 10px;text-transform: uppercase;color: #707473;">售后服务政策</h4>
                         </a>
                         <a style="display: inline-block;width: 155px;height: 155px;margin-left: 18px;margin-right: 18px;margin-bottom: 30px;padding-top: 20px;padding-left: 10px;padding-right: 10px;border: solid 1px #707473;border-radius: 3px;text-align: center;vertical-align: top;" class="item" href="https://www.flypie.net/download-VR6Pro.html">
-                            <img style="width: 60px;height: 60px;border: none" alt src="http://111.230.242.218/images/s1-download.png">
+                            <img style="width: 60px;height: 60px;border: none" alt src="https://www.flypie.net/image/catalog/Contact/s1-download.png">
                             <h4 style="font-size: 14px;margin-top: 10px;text-transform: uppercase;color: #707473;">下载</h4>
                         </a>
                     </div>
@@ -67,8 +67,8 @@ include('catalog/view/theme/' . $config->get('theme_' . $config->get('config_the
                         <div style="display: inline-block;padding-left: 60px;padding-right: 60px;box-sizing: border-box;" class="item"  id="support-email">
                             <a href="javascript:void(0);" class="detail-btn">
                                 <div style="max-width: 93px;margin: 0 auto;position: relative;" class="icon-box-big">
-                                    <img style="opacity:1;border: none;" class="icon-c" src="http://111.230.242.218/images/icon-c.png">
-                                    <img style="position: absolute;top: 0;left: 0;z-index: 10;border: none" class="icon-f" src="http://111.230.242.218/images/icon-f.png">
+                                    <img style="opacity:1;border: none;" class="icon-c" src="https://www.flypie.net/image/catalog/Contact/icon-c.png">
+                                    <img style="position: absolute;top: 0;left: 0;z-index: 10;border: none" class="icon-f" src="https://www.flypie.net/image/catalog/Contact/icon-f.png">
                                 </div>
                                 <h4>邮箱</h4>
                             </a>
@@ -76,8 +76,8 @@ include('catalog/view/theme/' . $config->get('theme_' . $config->get('config_the
                         <div style="display: inline-block;padding-left: 60px;padding-right: 60px;box-sizing: border-box;" class="item" id="support-tel">
                             <a href="javascript:void(0);" class="datail-btn">
                                 <div style="max-width: 93px;margin: 0 auto;position: relative;" class="icon-box-big">
-                                    <img style="opacity:1;border: none;" class="icon-t" src="http://111.230.242.218/images/icon-t.png">
-                                    <img style="position: absolute;top: 0;left: 0;z-index: 10;border: none" class="icon-s" src="http://111.230.242.218/images/icon-s.png">
+                                    <img style="opacity:1;border: none;" class="icon-t" src="https://www.flypie.net/image/catalog/Contact/icon-t.png">
+                                    <img style="position: absolute;top: 0;left: 0;z-index: 10;border: none" class="icon-s" src="https://www.flypie.net/image/catalog/Contact/icon-s.png">
                                 </div>
                                 <h4>电话</h4>
                             </a>

@@ -2,6 +2,7 @@
 // Version
 define('VERSION', '3.0.2.0');
 
+ini_set("error_reporting","E_ALL & ~E_NOTICE");
 //ini_set("session.cookie_httponly", 1);
 //header('X-Frame-Options: deny');
 

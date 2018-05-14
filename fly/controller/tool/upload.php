@@ -303,6 +303,7 @@ class ControllerToolUpload extends Controller {
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['footer'] = $this->load->controller('common/footer');
 
+            $this->load->language('error/not_found');
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
 	}

@@ -24,7 +24,7 @@ $modules = new Modules($registry);
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<?php if($theme_options->get( 'responsive_design' ) != '0') { ?>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<?php } ?>
 	<?php if ($description) { ?>
 	<meta name="description" content="<?php echo $description; ?>" />

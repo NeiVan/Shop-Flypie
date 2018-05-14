@@ -40,6 +40,10 @@ body {
 	line-height:1.6;
 	font-family:"'Microsoft YaHei',Arial";
 	background:#f0f2f5;
+	overflow-x:hidden;
+}
+html {
+	overflow-x: hidden;
 }
 
 .fixed-body {
@@ -814,9 +818,9 @@ header .background-header {
 	font-size: 14px;
 	text-align: center;
 	color: #ffffff;
-	width: 23px;
-	height: 23px;
-	line-height: 24px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
 	border-radius: 50%;
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
@@ -889,6 +893,8 @@ header .background-header {
 .mini-cart-info .image img {
 	border: 1px solid #EEEEEE;
 	display: block;
+	width: 98px;
+	height: 98px;
 }
 
 .mini-cart-info .name {
@@ -908,7 +914,11 @@ header .background-header {
 
 .mini-cart-info .remove {
 	text-align: right;
-	padding: 10px 20px 13px 10px;
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+	top: -45px;
+	right: 31px;
 }
 
 .mini-cart-info .remove img {
@@ -1104,7 +1114,6 @@ h1#title-page {
 /* @group Block */
 
 .box {
-	padding: 30px 0px 10px 0px;
 	position: relative;
 }
 

@@ -146,7 +146,8 @@ class Mail {
 			$this->adaptor->$key = $value;
 		}
 		
-		$this->adaptor->send();*/
+		$this->adaptor->send();
+*/
     public function send() {
         if (!$this->to) {
             trigger_error('Error: E-Mail to required!');
@@ -211,23 +212,21 @@ class Mail {
             }
         }
 
-        if ($this->protocol == 'smtp') {
-            $mail->IsSMTP();
+        $mail->IsSMTP();
+        $mail->Host = $this->smtp_hostname;
+        $mail->Port = $this->smtp_port;
+        if($this->smtp_port == '587'){
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = "tls";
+        } elseif ($this->smtp_port == '465') {
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = "ssl";
+        }
+        if (!empty($this->smtp_username)  && !empty($this->smtp_password)) {
+            $mail->SMTPAuth = true;
             $mail->Host = $this->smtp_hostname;
-            $mail->Port = $this->smtp_port;
-            if($this->smtp_port == '587'){
-                $mail->SMTPAuth = true;
-                $mail->SMTPSecure = "tls";
-            } elseif ($this->smtp_port == '465') {
-                $mail->SMTPAuth = true;
-                $mail->SMTPSecure = "ssl";
-            }
-            if (!empty($this->smtp_username)  && !empty($this->smtp_password)) {
-                $mail->SMTPAuth = true;
-                $mail->Host = $this->smtp_hostname;
-                $mail->Username = $this->smtp_username;
-                $mail->Password = $this->smtp_password;
-            }
+            $mail->Username = $this->smtp_username;
+            $mail->Password = $this->smtp_password;
         }
         $mail->Send();
             

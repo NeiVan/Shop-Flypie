@@ -35,6 +35,11 @@ $_['text_transaction_expired']             = 'Expired';
 $_['text_empty']                           = 'No recurring payments found!';
 $_['text_error']                           = 'The recurring order you requested could not be found!';
 $_['text_cancelled']                       = 'Recurring payment has been cancelled';
+$_['text_error_tips']                      = 'Sorry, the recurring order you requested could not be found<br/>Or it is not feasible.';
+$_['text_error_return']                    = 'Return';
+$_['text_flypie']                          = 'Flypie Technology';
+$_['text_information']                     = 'Or about this issue';
+$_['text_contact_us']                      = 'Contact us';
 
 // Column
 $_['column_date_added']                    = 'Date Added';
